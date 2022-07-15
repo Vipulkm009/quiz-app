@@ -1,32 +1,37 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const { ObjectId } = Schema;
 const crypto = require('crypto');
 const { createHmac } = crypto;
 const uuid = require('uuid');
 const { v1 } = uuid;
 
 const UserSchema = new Schema({
-  name: {
+  fullName: {
     type: String,
     required: true,
-    maxLength: 32,
+    maxLength: 64,
     trim : true,
   },
-  lastname: {
-    type: String,
-    maxLength: 32,
-    trim : true,
-  },
+  
   email: {
     type: String,
     required: true,
-    maxLength: 32,
+    maxLength: 64,
     trim : true,
     unique: true,
   },
-  userInfo: {
+  phone: {
+    type: String,
+    maxLength: 13,
+    trim: true,
+  },
+  occupation: {
     type: String,
     trim: true,
+  },
+  myQuizzes: {
+    type: []
   },
   //TODO: come back here
   encryptedPassword: {
@@ -34,7 +39,6 @@ const UserSchema = new Schema({
     required: true,
   },
   salt: String,
-  
 },
 {
   timestamps: true,
