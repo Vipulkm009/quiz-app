@@ -9,16 +9,21 @@ const QuestionSchema = new Schema( {
         required: true,
         trim: true
     },
-    options: {
-        type: [],
-        
+    image: {
+        data: Buffer,
+        contentType: String
     },
+    options: [String],
+    optionImages: [{
+        data: Buffer,
+        contentType: String
+    }],
     duration: {
-        type: Int32Array,
+        type: Number,
         required: true
     },
     marks: {
-        type: Float32Array,
+        type: Number,
         default: 0.0
     },
     answers: {
@@ -28,3 +33,5 @@ const QuestionSchema = new Schema( {
 {
     timestamps: true
 });
+
+module.exports = mongoose.model("Question", QuestionSchema);

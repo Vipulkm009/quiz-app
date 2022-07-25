@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const { validationResult } = require('express-validator');
-var jwt = require('jsonwebtoken');
-var { expressjwt } = require("express-jwt");
+const jwt = require('jsonwebtoken');
+const { expressjwt } = require("express-jwt");
 
 exports.signUp = (req, res) => {
 
@@ -59,9 +59,9 @@ exports.signIn = (req, res) => {
         res.cookie("token", token, {expire: Date() + 9999});
         
         //send response to front end
-        const {_id, name, email, role} = user;
+        const {_id, fullName, email, occupation, myQuizzes} = user;
 
-        return res.json({token, user: {_id, name, email, role}});
+        return res.json({token, user: {_id, fullName, email, occupation, myQuizzes}});
     })
 };
 
@@ -83,7 +83,7 @@ exports.isSignedIn = expressjwt({
 
 // custom middlewares
 exports.isAuthenticated = (req, res, next) => {
-    let checker = req.profile && req.auth && req.profile._id === req.auth._id;
+    let checker = req.profile && req.auth && req.profile._id == req.auth._id;
     if(!checker){
         return res.status(403).json({
             error: "ACCESS DENIED"

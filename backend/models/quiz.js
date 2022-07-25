@@ -18,7 +18,7 @@ const QuizSchema = new Schema({
         required: true
     },
     startTime: {
-        type: TimeRanges,
+        type: Number,
         required: true
     },
     organizedBy: {
@@ -27,7 +27,7 @@ const QuizSchema = new Schema({
         required: true,
     },
     durationForEachQuestion: {
-        type: Int32Array
+        type: Number
     },
     questions: {
         type: [],
@@ -38,7 +38,7 @@ const QuizSchema = new Schema({
         
     },
     totalMarks: {
-        type: Float32Array,
+        type: Number,
         default: 0.0
     }
 },
