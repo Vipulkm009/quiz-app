@@ -30,9 +30,10 @@ const UserSchema = new Schema({
     type: String,
     trim: true,
   },
-  myQuizzes: {
-    type: []
-  },
+  myQuizzes: [{
+    type: ObjectId,
+    ref: 'Quiz'
+  }],
   //TODO: come back here
   encryptedPassword: {
     type: String,
