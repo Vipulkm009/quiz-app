@@ -29,14 +29,17 @@ const QuizSchema = new Schema({
     durationForEachQuestion: {
         type: Number
     },
-    questions: {
-        type: [],
-        required: true,
-        default: []
-    },
-    result: {
+    questions: [{
+        content: String,
+        questionType: String,
+        options: [String],
+        duration: Number,
+        marks: Number,
+        answers: [String],
+    }],
+    // result: { 
         
-    },
+    // },
     totalMarks: {
         type: Number,
         default: 0.0

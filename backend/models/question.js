@@ -13,6 +13,10 @@ const QuestionSchema = new Schema( {
         data: Buffer,
         contentType: String
     },
+    type: {
+        type: String,
+        required: true
+    },
     options: [String],
     optionImages: [{
         data: Buffer,
@@ -27,7 +31,7 @@ const QuestionSchema = new Schema( {
         default: 0.0
     },
     answers: {
-        type: [],
+        type: [String],
     }
 },
 {
